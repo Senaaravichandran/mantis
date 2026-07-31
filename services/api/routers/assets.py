@@ -140,3 +140,5 @@ async def delete_asset(asset_id: UUID, db: AsyncSession = Depends(get_db)):
     if not asset:
         raise HTTPException(status_code=404, detail="Asset not found")
     await db.delete(asset)
+
+# Asset retrieval logic
