@@ -44,3 +44,5 @@ echo "  API Docs:   http://localhost:8000/docs"
 echo "  Qdrant UI:  http://localhost:6333/dashboard"
 echo "  MinIO:      http://localhost:9001"
 echo "=========================================="
+
+# Ensure simulation data is clean
