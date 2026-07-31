@@ -77,3 +77,5 @@ KAFKA_TOPICS = {
     "weather": "mantis.weather",
     "satellite": "mantis.satellite",
 }
+
+# System-wide constants
