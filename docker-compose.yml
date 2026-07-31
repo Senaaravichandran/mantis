@@ -270,3 +270,5 @@ volumes:
   ollama-data:
   kafka-data:
   zookeeper-data:
+
+# Updated service configurations
