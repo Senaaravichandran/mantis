@@ -1,199 +1,111 @@
-# MANTIS - Vigilant Infrastructure Guardian with Intelligent Lifecycle Management
+# ⚡ M A N T I S
+### 🔮 Vigilant Infrastructure Guardian with Intelligent Lifecycle Management
 
-An open-source multi-agent AI platform for predictive municipal infrastructure intelligence. MANTIS uses 6 LLM-powered agents orchestrated by LangGraph to monitor bridges, water mains, roads, and other infrastructure assets — generating alerts, work orders, compliance filings, and maintenance schedules autonomously.
+<div align="center">
+  <img src="https://via.placeholder.com/800x200/000000/00ffcc?text=M+A+N+T+I+S" alt="Mantis Cyber UI" width="100%"/>
+</div>
 
-## Architecture
+---
 
+**MANTIS** is a next-generation, multi-agent AI platform built for the predictive intelligence of municipal infrastructure. Orchestrated by 6 specialized, LangGraph-powered LLM agents, MANTIS constantly monitors bridges, roads, water mains, and critical assets.
+
+Operating with complete autonomy, MANTIS generates real-time alerts, files compliance paperwork, issues work orders, and dynamically predicts failure points before they impact the grid.
+
+---
+
+## 🌌 System Architecture 
+
+> The core matrix integrates modern web frameworks, asynchronous backends, and multi-modal AI models into a singular, cohesive organism.
+
+```mermaid
+graph TD
+    UI[Next.js 14 Holographic Dashboard] --> API[FastAPI Sync Node]
+    API <-->|WebSocket/REST| AGENTS[Agent Core - LangGraph]
+    API <-->|gRPC| ML[ML Engine - PyOD/Prophet]
+    API <-->|Stream| ING[Ingestion Service - Kafka]
+    
+    AGENTS --> DB[(PostgreSQL + TimescaleDB)]
+    ML --> DB
+    ING --> DB
+    
+    AGENTS --> VEC[(Qdrant Vector Store)]
+    ING --> MINIO[(MinIO Object Storage)]
 ```
-                     +-------------------+
-                     |   Next.js 14 UI   |
-                     |   (Dashboard)     |
-                     +--------+----------+
-                              |
-                     +--------v----------+
-                     |   FastAPI Backend  |
-                     |   REST + WebSocket |
-                     +--------+----------+
-                              |
-          +-------------------+-------------------+
-          |                   |                   |
-+---------v------+  +---------v------+  +--------v--------+
-| Agent Service  |  |  ML Service    |  | Ingestion Svc   |
-| (LangGraph)    |  | (PyOD/Prophet) |  | (Kafka + APIs)  |
-+----------------+  +----------------+  +-----------------+
-          |                   |                   |
-+---------v-------------------v-------------------v--------+
-|                    Infrastructure                         |
-| PostgreSQL+TimescaleDB | Redis | Kafka | Qdrant | MinIO  |
-+----------------------------------------------------------+
-```
 
-## 6 AI Agents
+## 🤖 The 6 AI Operatives
 
-| Agent | Role | Capabilities |
-|-------|------|-------------|
-| **Sentinel** | Anomaly Detection | Monitors sensors, flags deviations > 2 sigma, correlates weather |
-| **Analyst** | Risk Scoring | Root cause analysis, multi-factor risk assessment, failure prediction |
-| **Planner** | Maintenance Planning | Work order drafting, cost estimation, priority scheduling |
-| **Reporter** | Communication | Report generation, Slack/email notifications, executive summaries |
-| **Contractor** | Procurement | RFQ drafting, bid comparison, contractor matching |
-| **Regulator** | Compliance | Inspection cycle tracking, regulatory filing, deadline monitoring |
+| Operative | Designation | Primary Directive |
+|:---|:---|:---|
+| 🛡️ **Sentinel** | Anomaly Detection | Continuous sensor monitoring, >2 sigma variance flagging, multi-sensor correlation. |
+| 🧠 **Analyst** | Risk Scoring | Deep root cause analysis, predictive failure modeling. |
+| 🏗️ **Planner** | Maintenance | Automated work order generation, dynamic priority scheduling. |
+| 📡 **Reporter** | Communications | Real-time Slack/Email dispatching, executive holograph summaries. |
+| 💼 **Contractor** | Procurement | RFQ synthesis, automated bid comparison, contractor deployment. |
+| ⚖️ **Regulator** | Compliance | Deadline tracking, regulatory reporting and cycle monitoring. |
 
-## Tech Stack
+## 🚀 Deployment Protocol
 
-- **Backend**: FastAPI, SQLAlchemy 2.x (async), Pydantic 2.x
-- **Database**: PostgreSQL 16 + TimescaleDB + PostGIS
-- **AI/ML**: LangGraph, Ollama (LLaMA 3 + Mistral), PyOD, NeuralProphet, XGBoost
-- **Vector DB**: Qdrant (RAG over infrastructure documents)
-- **Streaming**: Apache Kafka (sensor data + agent events)
-- **Task Queue**: Celery + Redis
-- **Frontend**: Next.js 14, TanStack Query, Zustand, Recharts, Tailwind CSS
-- **Storage**: MinIO (S3-compatible)
-- **Infrastructure**: Docker Compose
+### 🌐 Deploying to Render (The Cloud Matrix)
 
-## Quick Start
+Deploying MANTIS to [Render](https://render.com) is streamlined for maximum efficiency. 
 
-### Prerequisites
+**Prerequisites:**
+1. A [Render Account](https://dashboard.render.com/register).
+2. A connected GitHub repository containing this codebase.
 
-- Docker & Docker Compose
-- 16GB+ RAM recommended
-- NVIDIA GPU (optional, for Ollama acceleration)
+**Step-by-Step Deployment:**
 
-### 1. Clone and configure
+1. **Database Provisioning (Render Dashboard):**
+   - Create a new **PostgreSQL** instance on Render.
+   - Create a new **Redis** instance.
+   - Note the Internal connection URLs for both.
+
+2. **Backend Service (FastAPI):**
+   - Click **New** -> **Web Service**.
+   - Connect this repository.
+   - Set **Build Command**: `pip install -r requirements.txt` (or appropriate if using poetry).
+   - Set **Start Command**: `uvicorn main:app --host 0.0.0.0 --port 10000`.
+   - Add Environment Variables:
+     - `DATABASE_URL` (from step 1)
+     - `REDIS_URL` (from step 1)
+
+3. **Frontend Dashboard (Next.js):**
+   - Click **New** -> **Web Service**.
+   - Connect this repository.
+   - Set **Root Directory**: `web`.
+   - Set **Build Command**: `npm install && npm run build`.
+   - Set **Start Command**: `npm start`.
+   - Add Environment Variable:
+     - `NEXT_PUBLIC_API_URL` (Set this to the URL of the backend service created in Step 2).
+
+4. **Background Workers & ML:**
+   - Create Render **Background Workers** for Celery and the ML services pointing to the respective directories with their start commands.
+
+*MANTIS is now live on the global grid.* 🌍
+
+---
+
+## 💻 Local Sandbox Initialization
+
+To run the MANTIS node locally:
 
 ```bash
+# 1. Clone & Configure
+git clone https://github.com/Senaaravichandran/mantis.git
 cd mantis
 cp .env.example .env
-```
 
-### 2. Start all services
-
-```bash
+# 2. Ignite the Core
 make up
-```
 
-This starts: PostgreSQL/TimescaleDB, Redis, Kafka, Qdrant, MinIO, Ollama, and all MANTIS services.
-
-### 3. Seed demo data
-
-```bash
+# 3. Seed Simulation Data
 make seed
 ```
 
-Loads 2 municipalities, 20+ infrastructure assets (Pittsburgh, PA), 30 days of sensor data, alerts, and work orders.
+> **Access Nodes:** Dashboard (`http://localhost:3000`) | API Docs (`http://localhost:8000/docs`)
 
-### 4. Pull LLM models (first time only)
+---
 
-```bash
-make ollama-setup
-```
+## 📜 Directive License
 
-Downloads LLaMA 3 and Mistral models for local inference.
-
-### 5. Access the platform
-
-| Service | URL |
-|---------|-----|
-| Dashboard | http://localhost:3000 |
-| API Docs (Swagger) | http://localhost:8000/docs |
-| Qdrant UI | http://localhost:6333/dashboard |
-| MinIO Console | http://localhost:9001 |
-
-## Development
-
-### Run services individually (hot reload)
-
-```bash
-make dev-api    # FastAPI with uvicorn --reload
-make dev-web    # Next.js dev server
-```
-
-### Run tests
-
-```bash
-make test
-```
-
-### View logs
-
-```bash
-make logs            # All services
-make logs s=api      # Single service
-```
-
-## Project Structure
-
-```
-mantis/
-├── docker-compose.yml        # Full dev stack
-├── Makefile                  # Dev shortcuts
-├── .env.example              # Environment template
-├── shared/                   # Shared Python library
-│   └── mantis_shared/        # Constants, config, models
-├── services/
-│   ├── api/                  # FastAPI REST backend
-│   │   ├── models/          # SQLAlchemy models
-│   │   ├── schemas/         # Pydantic schemas
-│   │   ├── routers/         # API endpoints
-│   │   ├── database/        # DB connection + init SQL
-│   │   ├── middleware/      # Audit log, request ID
-│   │   ├── auth/            # JWT auth (optional)
-│   │   └── seed.py          # Demo data seeder
-│   ├── agents/               # LangGraph agent service
-│   │   ├── agents/          # 6 agent implementations
-│   │   ├── graph/           # StateGraph + routing
-│   │   ├── tools/           # Agent tools (DB, vector, weather)
-│   │   ├── llm/             # Ollama provider + prompts
-│   │   ├── rag/             # Document indexer + retriever
-│   │   └── memory/          # Episodic + working memory
-│   ├── ml/                   # ML service
-│   │   ├── anomaly/         # PyOD + River detectors
-│   │   ├── forecasting/     # NeuralProphet + XGBoost
-│   │   └── vision/          # Satellite + crack detection
-│   ├── ingestion/            # Data ingestion service
-│   │   ├── connectors/      # Simulator, NOAA, USGS, SCADA
-│   │   └── schemas/         # Event schemas
-│   └── worker/               # Celery worker service
-│       └── tasks/           # Scheduled scans, reports
-├── web/                      # Next.js 14 dashboard
-│   ├── app/                 # Pages (App Router)
-│   ├── components/          # UI + chart + map components
-│   └── lib/                 # API client, store, utils
-└── scripts/                  # Utility scripts
-```
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/v1/assets` | List all infrastructure assets |
-| GET | `/api/v1/assets/{id}` | Get asset details |
-| POST | `/api/v1/sensors/readings` | Ingest sensor data |
-| GET | `/api/v1/sensors/{asset_id}/history` | Sensor history |
-| GET | `/api/v1/alerts` | List alerts |
-| POST | `/api/v1/alerts/{id}/acknowledge` | Acknowledge alert |
-| POST | `/api/v1/alerts/{id}/resolve` | Resolve alert |
-| GET | `/api/v1/workorders` | List work orders |
-| POST | `/api/v1/workorders/{id}/approve` | Approve work order |
-| GET | `/api/v1/analytics/dashboard` | Dashboard stats |
-| POST | `/api/v1/agents/trigger` | Trigger agent run |
-| GET | `/api/v1/agents/runs` | Agent run history |
-
-## Infrastructure Assets Supported
-
-- Bridges
-- Water mains
-- Roads
-- Tunnels
-- Pump stations
-- Culverts
-- Retention basins
-- Sewer lines
-
-## Sensor Types
-
-Vibration, strain, temperature, water level, flow rate, pressure, displacement, corrosion, humidity, pH
-
-## License
-
-Apache License 2.0 - see [LICENSE](LICENSE)
+Licensed under the **Apache License 2.0**. See the `LICENSE` databank for full terms.
