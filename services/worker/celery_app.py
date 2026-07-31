@@ -49,3 +49,5 @@ app.conf.beat_schedule = {
         "schedule": crontab(day_of_week=6, hour=4, minute=0),  # Saturday 4 AM
     },
 }
+
+# Celery worker optimizations
