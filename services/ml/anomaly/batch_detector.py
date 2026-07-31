@@ -118,3 +118,5 @@ class BatchAnomalyDetector:
             labels=labels.tolist(),
             threshold=float(threshold / s_max) if s_max > 0 else 0.5,
         )
+
+# Threshold tuning
