@@ -2,7 +2,7 @@
 ### 🔮 Vigilant Infrastructure Guardian with Intelligent Lifecycle Management
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x200/000000/00ffcc?text=M+A+N+T+I+S" alt="Mantis Cyber UI" width="100%"/>
+  <img src="docs/mantis_banner.png" alt="Mantis Cyber UI" width="100%"/>
 </div>
 
 ---
