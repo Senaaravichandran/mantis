@@ -50,3 +50,5 @@ ollama-setup:
 # Run agent evaluation
 agent-eval:
 	cd tests/agent-evals && python eval_full_pipeline.py
+
+# updated tasks
