@@ -51,3 +51,7 @@ redis-data/
 qdrant-data/
 kafka-data/
 zookeeper-data/
+
+# IDEs
+.vscode/
+.idea/
