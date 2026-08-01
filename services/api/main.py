@@ -66,6 +66,7 @@ async def health_check():
         "status": "healthy",
         "service": "mantis-api",
         "version": "0.1.0",
+        "timestamp": __import__("datetime").datetime.utcnow().isoformat(),
     }
 
 
