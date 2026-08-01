@@ -1,4 +1,4 @@
-.PHONY: up down restart logs seed test dev-api dev-web build clean
+.PHONY: up down restart logs seed test lint dev-api dev-web build clean
 
 # Start all services
 up:
@@ -24,6 +24,11 @@ seed:
 test:
 	cd services/api && python -m pytest
 	cd services/agents && python -m pytest
+
+# Run linting
+lint:
+	cd services/api && flake8 .
+	cd web && npm run lint
 
 # Development servers
 dev-api:
