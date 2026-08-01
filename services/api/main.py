@@ -22,9 +22,10 @@ settings = get_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("MANTIS API starting up", extra={"service": "api"})
+    logger.info("MANTIS API starting up", extra={"service": "api", "version": "0.1.0"})
+    logger.info("Initializing database connections...")
     yield
-    logger.info("MANTIS API shutting down", extra={"service": "api"})
+    logger.info("MANTIS API shutting down gracefully", extra={"service": "api"})
 
 
 app = FastAPI(
