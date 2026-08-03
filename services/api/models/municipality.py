@@ -7,7 +7,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from geoalchemy2 import Geometry
 
-from .base import Base, TimestampMixin
+from models.base import Base, TimestampMixin
 
 
 class Municipality(Base, TimestampMixin):

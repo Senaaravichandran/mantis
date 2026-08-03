@@ -7,7 +7,7 @@ from sqlalchemy import String, Float, Text, Boolean, DateTime, Enum, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from .base import Base
+from models.base import Base
 
 
 class Alert(Base):

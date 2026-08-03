@@ -6,12 +6,12 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select, func, case
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.connection import get_db
-from ..models.asset import Asset
-from ..models.alert import Alert
-from ..models.work_order import WorkOrder
-from ..models.agent_run import AgentRun
-from ..schemas.analytics_schema import (
+from database.connection import get_db
+from models.asset import Asset
+from models.alert import Alert
+from models.work_order import WorkOrder
+from models.agent_run import AgentRun
+from schemas.analytics_schema import (
     DashboardStats,
     RiskDistribution,
     AssetTypeCount,

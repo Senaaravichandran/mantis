@@ -5,8 +5,8 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.connection import get_db
-from ..models.document import Document
+from database.connection import get_db
+from models.document import Document
 
 router = APIRouter(prefix="/api/v1/reports", tags=["Reports"])
 

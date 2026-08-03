@@ -7,7 +7,7 @@ from sqlalchemy import String, Integer, Text, Date, DateTime, Boolean, BigIntege
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base import Base
+from models.base import Base
 
 
 class Document(Base):

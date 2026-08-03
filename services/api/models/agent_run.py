@@ -7,7 +7,7 @@ from sqlalchemy import String, Integer, Text, DateTime, ForeignKey, Numeric
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base import Base
+from models.base import Base
 
 
 class AgentRun(Base):

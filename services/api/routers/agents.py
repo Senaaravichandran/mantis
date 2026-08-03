@@ -5,9 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.connection import get_db
-from ..models.agent_run import AgentRun
-from ..schemas.agent_schema import (
+from database.connection import get_db
+from models.agent_run import AgentRun
+from schemas.agent_schema import (
     AgentTriggerRequest,
     AgentRunResponse,
     AgentRunListResponse,

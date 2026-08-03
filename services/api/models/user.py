@@ -6,7 +6,7 @@ from sqlalchemy import String, Boolean, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from .base import Base, TimestampMixin
+from models.base import Base, TimestampMixin
 
 
 class User(Base, TimestampMixin):

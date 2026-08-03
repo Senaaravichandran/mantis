@@ -6,9 +6,9 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.connection import get_db
-from ..models.sensor_reading import SensorReading
-from ..schemas.sensor_schema import (
+from database.connection import get_db
+from models.sensor_reading import SensorReading
+from schemas.sensor_schema import (
     SensorReadingCreate,
     SensorReadingResponse,
     SensorHourlyResponse,

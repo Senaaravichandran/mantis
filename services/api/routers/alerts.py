@@ -6,9 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.connection import get_db
-from ..models.alert import Alert
-from ..schemas.alert_schema import (
+from database.connection import get_db
+from models.alert import Alert
+from schemas.alert_schema import (
     AlertCreate,
     AlertAcknowledge,
     AlertResolve,

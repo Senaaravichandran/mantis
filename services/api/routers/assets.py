@@ -6,9 +6,9 @@ from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from geoalchemy2.functions import ST_MakePoint, ST_SetSRID
 
-from ..database.connection import get_db
-from ..models.asset import Asset
-from ..schemas.asset_schema import (
+from database.connection import get_db
+from models.asset import Asset
+from schemas.asset_schema import (
     AssetCreate,
     AssetUpdate,
     AssetResponse,
