@@ -9,8 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Add shared library to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared"))
-from mantis_shared.config import get_settings
-from mantis_shared.logging import setup_logging
+from vigil_shared.config import get_settings
+from vigil_shared.logging import setup_logging
 
 from .middleware.request_id import RequestIDMiddleware
 from .middleware.audit_log import AuditLogMiddleware
