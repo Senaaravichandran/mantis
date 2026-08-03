@@ -6,7 +6,7 @@ import sys
 import logging
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared"))
-from mantis_shared.logging import setup_logging
+from vigil_shared.logging import setup_logging
 
 from .connectors.simulator import SensorSimulator
 from .connectors.weather_connector import WeatherConnector
@@ -53,3 +53,4 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 # Initialize ingestion pipeline routes
+

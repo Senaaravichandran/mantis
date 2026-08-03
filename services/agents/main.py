@@ -8,8 +8,8 @@ from uuid import uuid4
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared"))
-from mantis_shared.logging import setup_logging
-from mantis_shared.config import get_settings
+from vigil_shared.logging import setup_logging
+from vigil_shared.config import get_settings
 
 from .graph.supervisor import build_mantis_graph
 from .graph.state import MANTISState
@@ -85,3 +85,4 @@ if __name__ == "__main__":
     asyncio.run(start_kafka_consumer())
 
 # Agent core setup
+

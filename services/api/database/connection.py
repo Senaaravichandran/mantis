@@ -10,7 +10,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "shared"))
-from mantis_shared.config import get_settings
+from vigil_shared.config import get_settings
 
 settings = get_settings()
 
@@ -38,3 +38,4 @@ async def get_db() -> AsyncSession:
             raise
         finally:
             await session.close()
+
