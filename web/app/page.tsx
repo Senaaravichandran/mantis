@@ -348,3 +348,5 @@ function HealthIcon() {
 }
 
 // Dashboard layout tweaks
+
+// Finalizing end-to-end frontend integration
