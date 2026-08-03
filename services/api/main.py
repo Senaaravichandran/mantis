@@ -12,9 +12,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared")
 from vigil_shared.config import get_settings
 from vigil_shared.logging import setup_logging
 
-from .middleware.request_id import RequestIDMiddleware
-from .middleware.audit_log import AuditLogMiddleware
-from .routers import assets, sensors, alerts, workorders, analytics, agents, reports, admin
+from middleware.request_id import RequestIDMiddleware
+from middleware.audit_log import AuditLogMiddleware
+from routers import assets, sensors, alerts, workorders, analytics, agents, reports, admin
 
 logger = setup_logging("mantis-api")
 settings = get_settings()
